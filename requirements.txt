@@ -1,11 +1,15 @@
 aiohttp==3.7.4.post0
+asgiref==3.5.2
 asttokens==2.0.5
 async-timeout==3.0.1
 asyncio==3.4.3
 attrs==21.2.0
+backports.zoneinfo==0.2.1
 beartype==0.10.4
 chardet==4.0.0
-fast-bitrix24==1.5.5
+Django==4.0.5
+djangorestframework==3.13.1
+fast-bitrix24==1.5.6
 icontract==2.6.1
 idna==3.2
 idna-ssl==1.1.0
@@ -13,7 +17,9 @@ isdayoff==1.0
 more-itertools==8.13.0
 multidict==5.1.0
 python-dotenv==0.20.0
+pytz==2022.1
 six==1.16.0
+sqlparse==0.4.2
 tqdm==4.64.0
 typing-extensions==3.10.0.0
 yarl==1.6.3
