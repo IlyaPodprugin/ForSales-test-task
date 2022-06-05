@@ -100,14 +100,17 @@ def add_new_deal(request, contact):
 
 
 def handle_request(request):
-
+	# Установить необходимые пользовательские поля сделок, 
+	# если они ещё не установлены
 	deal = DealStringUserField(bitrix)
 	deal.set_fields()
 
+	# Проверка наличия контакта
 	contact = get_contact(request, {"PHONE": request["client"]["phone"]})
 	if not contact:
 		return add_new_contact(request)
 
+	# Проверка наличия сделки
 	deal = get_deal(request, {"UF_CRM_DELIVERY_CODE": request["delivery_code"]})
 	if not deal:
 		return add_new_deal(request, contact)
@@ -118,6 +121,8 @@ def handle_request(request):
 		all(product in deal["UF_CRM_PRODUCTS"].split(", ") for product in request["products"]),
 	)
 
+	# Если уже создан контакт и сделка, то скрипт сравнивает данные 
+	# в запросе и сделке и, если что-то отличается, обновляет сделку
 	if not all(rules):
 		deal = update_deal(request, deal["ID"])
 	return {"crm.deal": deal, "crm.contact": contact}

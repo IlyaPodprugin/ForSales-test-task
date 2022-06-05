@@ -2,6 +2,10 @@ from typing import NoReturn
 
 
 class DealStringUserField:
+	"""
+	Класс используется для работы с пользовательскими 
+	полями сделок Битрикс24
+	"""
 
 	def __init__(self, bitrix) -> None:
 		self.bitrix = bitrix
@@ -10,6 +14,7 @@ class DealStringUserField:
 		field_name: str, edit_form_label: str, 
 		list_column_label: str, xml_id: str, mandatory="Y"
 	) -> int:
+		"""Метод устанавливает пользовательское поле сделки"""
 		return self.bitrix.call(
 			"crm.deal.userfield.add",
 			items={
@@ -24,9 +29,18 @@ class DealStringUserField:
 			})
 
 	def _get_deal_fields(self) -> dict:
+		"""
+		Метод получает список полей сделок Битрикс24.
+		Используется для проверки наличия необходимых 
+		пользовательских полей
+		"""
 		return self.bitrix.call("crm.deal.fields", raw=True)
 
 	def set_fields(self) -> NoReturn:
+		"""
+		Метод проверяет наличие необходимых пользовательских полей 
+		и устанавливает недостающие
+		"""
 		fields: dict = self._get_deal_fields()
 
 		if "UF_CRM_DELIVERY_ADRESS" not in fields:
