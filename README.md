@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## Задание №1
-В этом задании для получения информации о праздниках я использую библиотеку [isdayoff](https://pypi.org/project/isdayoff/). Для работы с Битрикс24 используется [fast_bitrix24](https://pypi.org/project/fast-bitrix24/).
+В этом задании для получения информации о праздниках я использую библиотеку [isdayoff](https://pypi.org/project/isdayoff/). Для работы с Битрикс24 используется [fast_bitrix24](https://pypi.org/project/fast-bitrix24/). Так как [isdayoff](https://pypi.org/project/isdayoff/) асинхронная библиотека, то и работа с Битрикс24 осуществляется в асинхронном режиме.
 
 Для определения не просто выходного, а именно праздничного дня, нужно добавить в запрос к API [isDayOff()](https://www.isdayoff.ru/) параметр `holiday=1`. Так как [isdayoff](https://pypi.org/project/isdayoff/) ещё не обновилась для использования данного функционала, мной было принято решение создать класс-наследник `ProdCalendarWithHolidayField` основного класса библиотеки `ProdCalendar` и переопределить метод отправления запроса.
 
@@ -48,9 +48,18 @@ ALLOWED_HOSTS="*"
 
 ## Запуск
 ```shell
-# Первое задание:
 python3 first_task/main.py
+```
 
-# Второе задание:
+## Задание №2
+Для работы с Битрикс24 снова используется [fast_bitrix24](https://pypi.org/project/fast-bitrix24/).
+
+Вся логика работы с Битрикс24 инкапсулирована в модуль `deal/services`. 
+
+```shell
 python3 second_task/manage.py runserver
 ```
+
+---
+
+Мой телеграм: [@ilya_pod](https://t.me/ilya_pod)
