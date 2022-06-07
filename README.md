@@ -52,6 +52,8 @@ python3 first_task/main.py
 ```
 
 ## Задание №2
+API endpoint: `http://127.0.0.1:8000/api/add-deal`
+
 Для работы с Битрикс24 снова используется [fast_bitrix24](https://pypi.org/project/fast-bitrix24/).
 
 Вся логика работы с Битрикс24 инкапсулирована в модуль `deal/services`.
